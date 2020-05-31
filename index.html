@@ -46,10 +46,8 @@
     <script>
         var url = "./poems/filesList.txt";
         getPageContents(function(result) {
-            personinfo=JSON.parse(result);
-            //Now I can do anything here with the personinfo array
             console.log(
-                personinfo
+                result
                 )
         }, url, null)
     </script>
