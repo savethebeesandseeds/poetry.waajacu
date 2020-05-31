@@ -1,0 +1,121 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>        
+        body {
+            background-color: #000000;
+            color: #A9A9A9;
+            font-family: 'OCR A Std', monospace;
+            font-size: 12px;
+        }
+        article {
+            background-color: #000000;
+            color: #d3aa60;
+            font-family: 'OCR A Std', monospace;
+            font-size: 12px;
+        }
+        #tabheader {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        #tabcontent {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .link {
+            color: #d3aa60;
+            text-decoration: none; 
+            background-color: none;
+            text-decoration-color: #d3aa60;
+        }
+    </style>
+    <script type="text/javascript">
+        alert(document.URL.substr(0,document.URL.lastIndexOf('/'))+"/poems")
+    </script>
+    <script type="text/javascript">
+        function activateTab(mainid, li_id, divid, tabid) {
+            var mainDiv = document.getElementById(mainid);
+            var li = document.getElementById(li_id);
+            var tabDiv = document.getElementById(divid);
+            var mainTab = document.getElementById(tabid);
+
+            for (var i = 0; i < mainDiv.childNodes.length; i++) {
+                var node = mainDiv.childNodes[i];
+                if (node.nodeType == 1) {
+                    node.style.background = (node == li) ? '#555555' : '#d3aa60;';
+                }
+            }
+            for (var i = 0; i < tabDiv.childNodes.length; i++) {
+                var node = tabDiv.childNodes[i];
+                if (node.nodeType == 1) {
+                    node.style.display = (node == mainTab) ? 'block' : 'none';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <body>
+        <script type="text/javascript">
+            var clicks = 0;
+            function highClick() {
+                clicks += 1;
+                document.getElementById("clicks").innerHTML = clicks;
+                let files = fs.readdir("/poems");
+                alert(files)
+            };
+            function lowClick() {
+                clicks -= 1;
+                document.getElementById("clicks").innerHTML = clicks;
+            };
+        </script>
+        <article>
+            Waajacu poetry is a Blog.
+        </article>
+        <button type="button" onClick="highClick()">wish luck</button>
+        <button type="button" onClick="lowClick()">decline</button>
+        <p>lUCKS: <a id="clicks">0</a></p>
+        <div id="tabheader">
+            INDEX:
+            <ul id="tablist">
+                <li id="addprop" style="background: #555555"><a  class="link" href="javascript:activateTab('tablist','addprop','tabcontent','addprop_tab')" title="">One</a></li>
+                <li id="savedprop"><a  class="link" href="javascript:activateTab('tablist','savedprop','tabcontent','savedprop_tab')" title="">Saved Property</a></li>
+                <li id="inbox"><a  class="link" href="javascript:activateTab('tablist','inbox','tabcontent','inbox_tab')" title="">Inbox</a></li>
+                <li id="profile"><a  class="link" href="javascript:activateTab('tablist','profile','tabcontent','profile_tab')" title="">Update Profile</a></li>
+            </ul>
+        </div> <!-- End of tabheader -->
+        <div id="tabcontent" class="maintab">
+            CONTENT:
+            <div id="addprop_tab" style="display: none">
+                <p><a href="#" title="Click to add property">Add your property to NPLH</a></p>
+            </div> <!-- End of addprop_tab -->
+            <div id="savedprop_tab" style="display: none">
+                <p>Browse your saved properties</p>
+            </div> <!-- End of savedprop_tab -->
+            <div id="inbox_tab" style="display: none">
+                <p>inbox</p>
+            </div> <!-- End of inbox_tab -->
+            <div id="profile_tab" style="display: none">
+                <p>
+                    <ul>
+                        <a href="javascript:activateTab('tablist','profile','profile_subtab','tab1')" title="">Español</a>
+                        <a href="javascript:activateTab('tablist','profile','profile_subtab','tab2')" title="">English</a>
+                        <a href="javascript:activateTab('tablist','profile','profile_subtab','tab3')" title="">Waajacu</a>
+                    </ul>
+                </p>
+                <div id="profile_subtab" class="subtab">
+                    <div id="tab1" style="display: block">
+                        <p>Español</p>
+                    </div> <!-- End of tab1 -->
+                    <div id="tab2" style="display: none">
+                        <p>English</p>
+                    </div> <!-- End of tab2 -->
+                    <div id="tab3" style="display: none">
+                        <p>Waajacu</p>
+                    </div> <!-- End of tab3 -->
+                </div>
+            </div> <!-- End of profile_tab -->
+        </div> <!-- End of tabcontent -->
+    </body>
+</body> 
