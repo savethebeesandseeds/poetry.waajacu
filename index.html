@@ -60,7 +60,9 @@
         var filesList = [];
         getPageContents(function(result) {
             filesList = result.split('\n');
-            filesList  = filter("", filesList);
+            filesList  = filesList.filter(function (el) {
+                return el != "";
+            });
             console.log(filesList);
         }, url, null)
     </script>
