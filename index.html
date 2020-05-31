@@ -19,6 +19,14 @@
             background-color: #000000;
             color: #ffffff;
         }
+        .light {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .gray {
+            background-color: #000000;
+            color: #A9A9A9;
+        }
         .link {
             color: #d3aa60;
             text-decoration: none; 
@@ -45,11 +53,24 @@
     </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
     <script>
         var url = "./poems/filesList.txt";
+        var filesList = [];
         getPageContents(function(result) {
-            console.log(
-                result
-                )
+            filesList = result.split('\n');
+            console.log(filesList);
         }, url, null)
+    </script>
+    <script>
+        function displayIndex(local) {
+            var contentNode = document.getElementById("tablistindex");
+            while (contentNode.firstChild) {
+                contentNode.removeChild(contentNode.firstChild);
+            }
+            filesList.forEach(file=>{
+                newdiv = document.createElement('li');
+                newdiv.id = file;
+                contentNode.appendChild(newdiv);
+            })
+        }
     </script>
     <script type="text/javascript">
         function activateTab(mainid, li_id, divid, tabid) {
@@ -94,24 +115,33 @@
         <button type="button" onClick="highClick()">wish luck</button>
         <button type="button" onClick="lowClick()">decline</button>
         <p>lUCKS: <a id="clicks">0</a></p>
-        <div id="tablanguage">
+        <p class="light">
             LANG:
-            <ul id="tablist">
-                <li id="addprop"><a  class="link" href="javascript:activateTab('tablist','addprop','tabcontent','addprop_tab')" title="">Spanish</a></li>
-                <li id="savedprop"><a  class="link" href="javascript:activateTab('tablist','savedprop','tabcontent','savedprop_tab')" title="">English</a></li>
+        </p>
+        <div id="tablanguage">
+            <ul id="tablistlanguage">
+                <li id="spanishTab"><a  class="link" href="javascript:displayIndex('es')" title="">Spanish</a></li>
+                <li id="englishTab"><a  class="link" href="javascript:displayIndex('en')" title="">English</a></li>
             </ul>
         </div> <!-- End of tablanguage -->
-        <div id="tabindex">
+        <p class="light">
             INDEX:
-            <ul id="tablist">
-                <li id="addprop"><a  class="link" href="javascript:activateTab('tablist','addprop','tabcontent','addprop_tab')" title="">One</a></li>
-                <li id="savedprop"><a  class="link" href="javascript:activateTab('tablist','savedprop','tabcontent','savedprop_tab')" title="">Saved Property</a></li>
-                <li id="inbox"><a  class="link" href="javascript:activateTab('tablist','inbox','tabcontent','inbox_tab')" title="">Inbox</a></li>
-                <li id="profile"><a  class="link" href="javascript:activateTab('tablist','profile','tabcontent','profile_tab')" title="">Update Profile</a></li>
+        </p>
+        <div id="tabindex">
+            <ul id="tablistindex">
+                <li id="addprop"><a  class="link" href="javascript:activateTab('tablistindex','addprop','tabcontent','addprop_tab')" title="">One</a></li>
+                <li id="savedprop"><a  class="link" href="javascript:activateTab('tablistindex','savedprop','tabcontent','savedprop_tab')" title="">Saved Property</a></li>
+                <li id="inbox"><a  class="link" href="javascript:activateTab('tablistindex','inbox','tabcontent','inbox_tab')" title="">Inbox</a></li>
+                <li id="profile"><a  class="link" href="javascript:activateTab('tablistindex','profile','tabcontent','profile_tab')" title="">Update Profile</a></li>
             </ul>
         </div> <!-- End of tabindex -->
-        <div id="tabcontent" class="maintab">
+        <p class="light">
             CONTENT:
+        </p>
+        <div id="tabcontent" class="maintab">
+            <p class="gray">
+                select language.
+            </p>
             <div id="addprop_tab" style="display: none">
                 <p><a href="#" title="Click to add property">Add your property to NPLH</a></p>
             </div> <!-- End of addprop_tab -->
