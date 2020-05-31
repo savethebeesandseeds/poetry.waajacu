@@ -73,11 +73,12 @@
                 contentNode.removeChild(contentNode.firstChild);
             }
             filesList.forEach(file=>{
-                fileName = file.split('\n');
-                newdiv = document.createElement('li');
-                newdiv.classList.add('class');
-                newdiv.id = fileName;
-                contentNode.appendChild(newdiv);
+                fileName = file.split('  ')[1];
+                newelement = document.createElement('li');
+                newelement.classList.add('class');
+                newelement.id = fileName;
+                newelement.innerHTML = fileName;
+                contentNode.appendChild(newelement);
             })
         }
     </script>
