@@ -73,9 +73,10 @@
                 contentNode.removeChild(contentNode.firstChild);
             }
             filesList.forEach(file=>{
+                fileName = file.split('\n');
                 newdiv = document.createElement('li');
-                newdiv.id = file;
-                newdiv.class = "gold";
+                newdiv.classList.add('class');
+                newdiv.id = fileName;
                 contentNode.appendChild(newdiv);
             })
         }
@@ -86,7 +87,6 @@
             var li = document.getElementById(li_id);
             var tabDiv = document.getElementById(divid);
             var mainTab = document.getElementById(tabid);
-
             for (var i = 0; i < mainDiv.childNodes.length; i++) {
                 var node = mainDiv.childNodes[i];
                 if (node.nodeType == 1) {
