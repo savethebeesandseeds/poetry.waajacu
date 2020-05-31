@@ -15,11 +15,7 @@
             font-family: 'OCR A Std', monospace;
             font-size: 12px;
         }
-        #tabheader {
-            background-color: #000000;
-            color: #ffffff;
-        }
-        #tabcontent {
+        #tabindex, #tablanguage, #tabcontent {
             background-color: #000000;
             color: #ffffff;
         }
@@ -31,7 +27,31 @@
         }
     </style>
     <script type="text/javascript">
-        alert(document.URL.substr(0,document.URL.lastIndexOf('/'))+"/poems")
+        function getPageContents(callback,url,params) {
+            http=new XMLHttpRequest();
+            if(params!=null) {
+                http.open("POST", url, true);
+                http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            } else {
+                http.open("GET", url, true);
+            }
+            http.onreadystatechange = function() {
+                if(http.readyState == 4 && http.status == 200) {
+                    callback(http.responseText);
+                }
+            }
+            http.send(params);
+        }
+    </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
+    <script>
+        var url = "./poems/filesList.txt";
+        getPageContents(function(result) {
+            personinfo=JSON.parse(result);
+            //Now I can do anything here with the personinfo array
+            console.log(
+                personinfo
+                )
+        }, url, null)
     </script>
     <script type="text/javascript">
         function activateTab(mainid, li_id, divid, tabid) {
@@ -76,15 +96,22 @@
         <button type="button" onClick="highClick()">wish luck</button>
         <button type="button" onClick="lowClick()">decline</button>
         <p>lUCKS: <a id="clicks">0</a></p>
-        <div id="tabheader">
+        <div id="tablanguage">
+            LANG:
+            <ul id="tablist">
+                <li id="addprop"><a  class="link" href="javascript:activateTab('tablist','addprop','tabcontent','addprop_tab')" title="">Spanish</a></li>
+                <li id="savedprop"><a  class="link" href="javascript:activateTab('tablist','savedprop','tabcontent','savedprop_tab')" title="">English</a></li>
+            </ul>
+        </div> <!-- End of tablanguage -->
+        <div id="tabindex">
             INDEX:
             <ul id="tablist">
-                <li id="addprop" style="background: #555555"><a  class="link" href="javascript:activateTab('tablist','addprop','tabcontent','addprop_tab')" title="">One</a></li>
+                <li id="addprop"><a  class="link" href="javascript:activateTab('tablist','addprop','tabcontent','addprop_tab')" title="">One</a></li>
                 <li id="savedprop"><a  class="link" href="javascript:activateTab('tablist','savedprop','tabcontent','savedprop_tab')" title="">Saved Property</a></li>
                 <li id="inbox"><a  class="link" href="javascript:activateTab('tablist','inbox','tabcontent','inbox_tab')" title="">Inbox</a></li>
                 <li id="profile"><a  class="link" href="javascript:activateTab('tablist','profile','tabcontent','profile_tab')" title="">Update Profile</a></li>
             </ul>
-        </div> <!-- End of tabheader -->
+        </div> <!-- End of tabindex -->
         <div id="tabcontent" class="maintab">
             CONTENT:
             <div id="addprop_tab" style="display: none">
