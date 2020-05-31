@@ -60,7 +60,7 @@
         var filesList = [];
         getPageContents(function(result) {
             filesList = result.split('\n');
-            filesList  = filesList.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList()
+            filesList  = filter("", filesList);
             console.log(filesList);
         }, url, null)
     </script>
