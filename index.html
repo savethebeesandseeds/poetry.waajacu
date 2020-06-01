@@ -87,14 +87,14 @@
             filesList.forEach(file=>{
                 if(file.includes('./')) {
                     clocal = file;
-                } else if(clocal.includes(local)) {
+                } else if(clocal.includes(local) && file.includes('.pdf')) {
                     fileName = file.split('.')[0];
                     fileExt = file.split('.')[1];
                     newelement_li = document.createElement('li');
                     newelement_li.id = "ID_"+fileName;
                     newelement_li_a = document.createElement('a');
                     newelement_li_a.classList.add('link');
-                    aux_href = "javascript:displayContent('./poems/"+local+"/"+file+"')";
+                    aux_href = "javascript:displayPdfContent('./poems/"+local+"/"+file+"')";
                     newelement_li_a.setAttribute("href", aux_href);
                     newelement_li_a.title = "TITLE_"+fileName;
                     newelement_li_a.innerHTML = fileName;
@@ -111,7 +111,7 @@
         }
     </script>
     <script type='text/javascript'>
-        function displayContent(tex_url) {
+        function displayTexContent(tex_url) {
             contentNode = document.getElementById('tabcontent');
             while (contentNode.firstChild) {
                 contentNode.removeChild(contentNode.firstChild);
@@ -123,6 +123,17 @@
                 contentNode.appendChild(newelement_latex);
                 console.log(result.toString());
             }, tex_url, null)
+        }
+        function displayPdfContent(pdf_url) {
+            contentNode = document.getElementById('tabcontent');
+            while (contentNode.firstChild) {
+                contentNode.removeChild(contentNode.firstChild);
+            }
+            newelement_latex = document.createElement('embed');
+            newelement_latex.setAttribute("src", pdf_url);
+            newelement_latex.setAttribute("width", "800px");
+            newelement_latex.setAttribute("height", "2100px");
+            contentNode.appendChild(newelement_latex);
         }
     </script>
     <script type='text/javascript'>
