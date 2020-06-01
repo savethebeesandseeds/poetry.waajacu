@@ -83,7 +83,7 @@
                     newelement.classList.add('gold');
                     newelement.id = "ID_"+fileName;
                     aux_href = "javascript:activateTab('tablistindex','"+fileName+"','tabcontent','addprop_tab')";
-                    newelement.href = aux_href;
+                    newelement.setAttribute("href", aux_href);
                     console.log(aux_href);
                     newelement.title = "TITLE_"+fileName;
                     newelement.innerHTML = fileName;
