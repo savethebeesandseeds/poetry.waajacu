@@ -92,7 +92,7 @@
                     newelement_li.id = "ID_"+fileName;
                     newelement_li_a = document.createElement('a');
                     newelement_li_a.classList.add('link');
-                    aux_href = "javascript:displayContent(./poems/"+local+file+")";
+                    aux_href = "javascript:displayContent('./poems/"+local+file+"')";
                     newelement_li_a.setAttribute("href", aux_href);
                     newelement_li_a.title = "TITLE_"+fileName;
                     newelement_li_a.innerHTML = fileName;
@@ -114,7 +114,7 @@
                 newelement_latex = document.createElement('latex-js');
                 newelement_latex.setAttribute("baseURL", "https://cdn.jsdelivr.net/npm/latex.js@0.11.1/dist/");
                 newelement_latex.innerHTML = result;
-                document.getElementById('tabcontent').appendChild(newelement_latex);
+                document.body.appendChild(newelement_latex);
             }, tex_url, null)
         }
     </script>
