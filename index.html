@@ -38,14 +38,14 @@
             text-decoration-color: #d3aa60;
         }
     </style>
-    <script type="text/javascript">
+    <script type='text/javascript'>
         function getPageContents(callback,url,params) {
             http=new XMLHttpRequest();
             if(params!=null) {
-                http.open("POST", url, true);
-                http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                http.open('POST', url, true);
+                http.setRequestHeader('Content-type', 'application/');
             } else {
-                http.open("GET", url, true);
+                http.open('GET', url, true);
             }
             http.onreadystatechange = function() {
                 if(http.readyState == 4 && http.status == 200) {
@@ -56,33 +56,47 @@
         }
     </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
     <script>
-        var url = "./poems/filesList.txt";
+        var url = './poems/filesList.txt';
         var filesList = [];
         getPageContents(function(result) {
             filesList = result.split('\n');
             filesList  = filesList.filter(function (el) {
-                return el != "";
+                return el != '';
             });
             console.log(filesList);
         }, url, null)
     </script>
     <script>
         function displayIndex(local) {
-            var contentNode = document.getElementById("tablistindex");
+            var clocal = "";
+            var contentNode = document.getElementById('tablistindex');
             while (contentNode.firstChild) {
                 contentNode.removeChild(contentNode.firstChild);
             }
             filesList.forEach(file=>{
-                fileName = file.split('  ')[1];
-                newelement = document.createElement('li');
-                newelement.classList.add('class');
-                newelement.id = fileName;
-                newelement.innerHTML = fileName;
-                contentNode.appendChild(newelement);
+                if(file.includes('./')) {
+                    clocal = file;
+                } else if(clocal.includes(local)) {
+                    fileName = file.split('.')[0];
+                    fileExt = file.split('.')[1];
+                    newelement = document.createElement('li');
+                    newelement.classList.add('gold');
+                    newelement.id = fileName;
+                    newelement.href = "javascript:activateTab('tablistindex','"+fileName+"','tabcontent','addprop_tab')"
+                    newelement.title = ""
+                    newelement.innerHTML = fileName;
+                    contentNode.appendChild(newelement);
+                }
             })
+            if(document.getElementById('tablistindex').children.length<1) {
+                newelement = document.createElement('li');
+                newelement.classList.add('gold');
+                newelement.innerHTML = "Not poems found for language "+local;
+                contentNode.appendChild(newelement);
+            }
         }
     </script>
-    <script type="text/javascript">
+    <script type='text/javascript'>
         function activateTab(mainid, li_id, divid, tabid) {
             var mainDiv = document.getElementById(mainid);
             var li = document.getElementById(li_id);
