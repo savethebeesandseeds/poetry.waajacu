@@ -2,12 +2,18 @@
 en
 es
 filesList.txt
+template.pdf
+template.tex
 
 ./en:
 doc1.tex
 doc2.tex
 doc3.tex
+template.tex
 
 ./es:
 EL_JARDIN_DE_LA_LOCURA.pdf
 EL_JARDIN_DE_LA_LOCURA.tex
+NaN.pdf
+NaN.tex
+template.tex

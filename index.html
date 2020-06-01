@@ -166,6 +166,10 @@
             clicks -= 1;
             document.getElementById("clicks").innerHTML = clicks;
         };
+        function beforeClosing(){
+            return null;
+        }
+        window.onbeforeunload = beforeClosing;
     </script>
 </head>
 <body>
