@@ -81,9 +81,10 @@
                     fileExt = file.split('.')[1];
                     newelement = document.createElement('li');
                     newelement.classList.add('gold');
-                    newelement.id = fileName;
-                    newelement.href = "javascript:activateTab('tablistindex','"+fileName+"','tabcontent','addprop_tab')"
-                    newelement.title = ""
+                    newelement.id = "ID_"+fileName;
+                    newelement.href = "javascript:activateTab('tablistindex','"+fileName+"','tabcontent','addprop_tab')";
+                    console.log("javascript:activateTab('tablistindex','"+fileName+"','tabcontent','addprop_tab')");
+                    newelement.title = "TITLE_"+fileName;
                     newelement.innerHTML = fileName;
                     contentNode.appendChild(newelement);
                 }
@@ -116,22 +117,22 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        var clicks = 0;
+        function highClick() {
+            clicks += 1;
+            document.getElementById("clicks").innerHTML = clicks;
+            let files = fs.readdir("/poems");
+            alert(files)
+        };
+        function lowClick() {
+            clicks -= 1;
+            document.getElementById("clicks").innerHTML = clicks;
+        };
+    </script>
 </head>
 <body>
     <body>
-        <script type="text/javascript">
-            var clicks = 0;
-            function highClick() {
-                clicks += 1;
-                document.getElementById("clicks").innerHTML = clicks;
-                let files = fs.readdir("/poems");
-                alert(files)
-            };
-            function lowClick() {
-                clicks -= 1;
-                document.getElementById("clicks").innerHTML = clicks;
-            };
-        </script>
         <article>
             Waajacu poetry is a Blog.
         </article>
