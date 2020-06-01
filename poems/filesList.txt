@@ -1,1 +1,12 @@
-es  filesList.txt
+.:
+en
+es
+filesList.txt
+
+./en:
+doc1.tex
+doc2.tex
+doc3.tex
+
+./es:
+EL_JARDIN_DE_LA_LOCURA.tex
