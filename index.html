@@ -55,7 +55,7 @@
             http.send(params);
         }
     </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
-    <script>
+    <script type='text/javascript'>
         var url = './poems/filesList.txt';
         var filesList = [];
         getPageContents(function(result) {
@@ -66,7 +66,7 @@
             console.log(filesList);
         }, url, null)
     </script>
-    <script>
+    <script type='text/javascript'>
         function displayIndex(local) {
             var clocal = "";
             var contentNode = document.getElementById('tablistindex');
@@ -79,15 +79,16 @@
                 } else if(clocal.includes(local)) {
                     fileName = file.split('.')[0];
                     fileExt = file.split('.')[1];
-                    newelement = document.createElement('li');
-                    newelement.classList.add('gold');
-                    newelement.id = "ID_"+fileName;
+                    newelement_li = document.createElement('li');
+                    newelement_li.id = "ID_"+fileName;
+                    newelement_li_a = document.createElement('a');
+                    newelement_li_a.classList.add('gold');
                     aux_href = "javascript:activateTab('tablistindex','"+fileName+"','tabcontent','addprop_tab')";
-                    newelement.setAttribute("href", aux_href);
-                    console.log(aux_href);
-                    newelement.title = "TITLE_"+fileName;
-                    newelement.innerHTML = fileName;
-                    contentNode.appendChild(newelement);
+                    newelement_li_a.setAttribute("href", aux_href);
+                    newelement_li_a.title = "TITLE_"+fileName;
+                    newelement_li_a.innerHTML = fileName;
+                    newelement_li.appendChild(newelement_li_a);
+                    contentNode.appendChild(newelement_li);
                 }
             })
             if(document.getElementById('tablistindex').children.length<1) {
