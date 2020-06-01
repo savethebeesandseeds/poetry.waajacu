@@ -37,7 +37,17 @@
             background-color: none;
             text-decoration-color: #d3aa60;
         }
+        latex-js {
+            display: inline-block;
+            width: 40%;
+            border: 1px solid red;
+            margin-right: 2em;
+        }
     </style>
+    <script type="module">
+        import latexjs from "https://cdn.jsdelivr.net/npm/latex.js/dist/latex.component.esm.js"
+        customElements.define('latex-js', latexjs)
+    </script>
     <script type='text/javascript'>
         function getPageContents(callback,url,params) {
             http=new XMLHttpRequest();
@@ -56,15 +66,14 @@
         }
     </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
     <script type='text/javascript'>
-        var url = './poems/filesList.txt';
+        var poems_url = './poems/filesList.txt';
         var filesList = [];
         getPageContents(function(result) {
             filesList = result.split('\n');
             filesList  = filesList.filter(function (el) {
                 return el != '';
             });
-            console.log(filesList);
-        }, url, null)
+        }, poems_url, null)
     </script>
     <script type='text/javascript'>
         function displayIndex(local) {
@@ -82,8 +91,8 @@
                     newelement_li = document.createElement('li');
                     newelement_li.id = "ID_"+fileName;
                     newelement_li_a = document.createElement('a');
-                    newelement_li_a.classList.add('gold');
-                    aux_href = "javascript:activateTab('tablistindex','"+fileName+"','tabcontent','addprop_tab')";
+                    newelement_li_a.classList.add('link');
+                    aux_href = "javascript:displayContent(./poems/"+local+file+")";
                     newelement_li_a.setAttribute("href", aux_href);
                     newelement_li_a.title = "TITLE_"+fileName;
                     newelement_li_a.innerHTML = fileName;
@@ -93,10 +102,20 @@
             })
             if(document.getElementById('tablistindex').children.length<1) {
                 newelement = document.createElement('li');
-                newelement.classList.add('gold');
+                newelement.classList.add('link');
                 newelement.innerHTML = "Not poems found for language "+local;
                 contentNode.appendChild(newelement);
             }
+        }
+    </script>
+    <script type='text/javascript'>
+        function displayContent(tex_url) {
+            getPageContents(function(result) {
+                newelement_latex = document.createElement('latex-js');
+                newelement_latex.setAttribute("baseURL", "https://cdn.jsdelivr.net/npm/latex.js@0.11.1/dist/");
+                newelement_latex.innerHTML = result;
+                document.getElementById('tabcontent').appendChild(newelement_latex);
+            }, tex_url, null)
         }
     </script>
     <script type='text/javascript'>
@@ -118,14 +137,12 @@
                 }
             }
         }
-    </script>
+    </script> <!-- javascript:activateTab('tablistindex','addprop','tabcontent','addprop_tab') -->
     <script type="text/javascript">
         var clicks = 0;
         function highClick() {
             clicks += 1;
             document.getElementById("clicks").innerHTML = clicks;
-            let files = fs.readdir("/poems");
-            alert(files)
         };
         function lowClick() {
             clicks -= 1;
