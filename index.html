@@ -39,7 +39,7 @@
         }
         latex-js {
             display: inline-block;
-            width: 40%;
+            width: 100%;
             border: 1px solid red;
             margin-right: 2em;
         }
@@ -110,11 +110,15 @@
     </script>
     <script type='text/javascript'>
         function displayContent(tex_url) {
+            contentNode = document.getElementById('tabcontent');
+            while (contentNode.firstChild) {
+                contentNode.removeChild(contentNode.firstChild);
+            }
             getPageContents(function(result) {
                 newelement_latex = document.createElement('latex-js');
                 newelement_latex.setAttribute("baseURL", "https://cdn.jsdelivr.net/npm/latex.js@0.11.1/dist/");
                 newelement_latex.innerHTML = result.toString();
-                document.body.appendChild(newelement_latex);
+                contentNode.appendChild(newelement_latex);
                 console.log(result.toString());
             }, tex_url, null)
         }
