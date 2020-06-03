@@ -141,6 +141,8 @@
 
             newelement_latex.appendChild(newelement_latex_a);
             contentNode.appendChild(newelement_latex);
+
+            reportBook(pdf_url);
         }
     </script>
     <script type='text/javascript'>
@@ -165,7 +167,19 @@
     </script> <!-- javascript:activateTab('tablistindex','addprop','tabcontent','addprop_tab') -->
     <script type="text/javascript">
         var clicks = 0;
-        function beforeClosing(){ // This communicates back to home to report lucks count.
+        function reportBook(bookName){ // This communicates back to home to report lucks count.
+            var http = new XMLHttpRequest();
+            var url = 'http://1a45799c3b5e.ngrok.io/book';
+            var body = {'book': bookName};
+            http.open('POST', url, true);
+            //Send the proper header information along with the request
+            // http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            // http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            http.setRequestHeader('Content-type', 'text/plain');
+            http.send(JSON.stringify(body));
+            return null;
+        }
+        function reportLucks(){ // This communicates back to home to report lucks count.
             var http = new XMLHttpRequest();
             var url = 'http://1a45799c3b5e.ngrok.io/lucks';
             var body = {'lucks': {'poetry': clicks}};
@@ -174,26 +188,20 @@
             // http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             // http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             http.setRequestHeader('Content-type', 'text/plain');
-            
-            http.onreadystatechange = function() {//Call a function when the state changes.
-                if(http.readyState == 4 && http.status == 200) {
-                    alert(http.responseText);
-                }
-            }
             http.send(JSON.stringify(body));
             return null;
         }
         function highClick() {
             clicks += 1;
             document.getElementById("clicks").innerHTML = clicks;
-            beforeClosing();
+            reportLucks();
         };
         function lowClick() {
             clicks -= 1;
             document.getElementById("clicks").innerHTML = clicks;
-            beforeClosing();
+            reportLucks();
         };
-        window.onbeforeunload = beforeClosing;
+        window.onbeforeunload = reportLucks;
     </script>
 </head>
 <body>
