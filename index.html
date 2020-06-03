@@ -133,6 +133,12 @@
             newelement_latex.setAttribute("data", pdf_url);
             newelement_latex.setAttribute("width", "100%");
             newelement_latex.setAttribute("height", "100%");
+
+            newelement_latex_a = document.createElement('a');
+            newelement_latex_a.setAttribute("href", pdf_url);
+            newelement_latex_a.setAttribute("innerHTML", "click here to download the PDF file.");
+
+            newelement_latex.appendChild(newelement_latex_a);
             contentNode.appendChild(newelement_latex);
         }
     </script>
