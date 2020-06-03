@@ -63,10 +63,11 @@
         }
     </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
     <script type='text/javascript'>
-        var configfile = 'http://www.waajacu.com/config/';
+        var configFolder = './config/';
         getPageContents(function(result) {
             const homeurl = result.split('\n')[0];
-        }, configfile + 'homeurl.txt', null)
+            console.log("waajacu")
+        }, configFolder + 'homeurl.txt', null)
         var poems_url = './poems/filesList.txt';
         var filesList = [];
         getPageContents(function(result) {
