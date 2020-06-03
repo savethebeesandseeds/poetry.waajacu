@@ -135,9 +135,9 @@
             newelement_latex.setAttribute("height", "100%");
 
             newelement_latex_a = document.createElement('a');
-            newelement_latex_a.setAttribute("href", `javascript:document.location.href = "${window.location.href + pdf_url}";`);
-            newelement_latex_a.innerHTML = "click here to download the PDF file.";
-            newelement_latex_a.classList.add('link');
+            newelement_latex_a.setAttribute("href", `javascript:window.open("${window.location.href + pdf_url}");`);
+            newelement_latex_a.innerHTML = "click here to view the PDF file.";
+            newelement_latex_a.classList.add('gold');
 
             newelement_latex.appendChild(newelement_latex_a);
             contentNode.appendChild(newelement_latex);
