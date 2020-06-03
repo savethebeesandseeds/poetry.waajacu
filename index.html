@@ -169,7 +169,7 @@
         var clicks = 0;
         function reportBook(bookName){ // This communicates back to home to report lucks count.
             var http = new XMLHttpRequest();
-            var url = 'http://1a45799c3b5e.ngrok.io/book';
+            var url = 'http://1a45799c3b5e.ngrok.io/books';
             var body = {'book': bookName};
             http.open('POST', url, true);
             //Send the proper header information along with the request
