@@ -64,8 +64,9 @@
     </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
     <script type='text/javascript'>
         var configFolder = './config/';
+        var homeurl = '';
         getPageContents(function(result) {
-            const homeurl = result.split('\n')[0];
+            homeurl = result.split('\n')[0];
             console.log("waajacu")
         }, configFolder + 'homeurl.txt', null)
         var poems_url = './poems/filesList.txt';
