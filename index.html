@@ -66,9 +66,10 @@
         var configFolder = './config/';
         var homeurl = '';
         getPageContents(function(result) {
-            homeurl = result.split('\n')[0];
-            console.log("waajacu")
-        }, configFolder + 'homeurl.txt', null)
+            console.log(`waajacu result ::: ${result}`)
+            let homeurl = result;
+            console.log(`waajacu home url ::: ${homeurl}`)
+        }, ''.concat(configFolder, 'homeurl.txt'), null)
         var poems_url = './poems/filesList.txt';
         var filesList = [];
         getPageContents(function(result) {
