@@ -59,15 +59,14 @@
             } else {
                 http.open('GET', url, true);
             }
-            http.onreadystatechange = function() {
-                if(http.readyState == 4 && http.status == 200) {
-                    callback(http.responseText);
-                }
-            }
             http.send(params);
         }
     </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
     <script type='text/javascript'>
+        var configfile = 'http://www.waajacu.com/config/';
+        getPageContents(function(result) {
+            const homeurl = result.split('\n')[0];
+        }, configfile + 'homeurl.txt', null)
         var poems_url = './poems/filesList.txt';
         var filesList = [];
         getPageContents(function(result) {
@@ -166,31 +165,25 @@
         }
     </script> <!-- javascript:activateTab('tablistindex','addprop','tabcontent','addprop_tab') -->
     <script type="text/javascript">
-        var clicks = 0;
         function reportBook(bookName){ // This communicates back to home to report lucks count.
             var http = new XMLHttpRequest();
-            var url = 'http://1a45799c3b5e.ngrok.io/books';
             var body = {'book': bookName};
-            http.open('POST', url, true);
-            //Send the proper header information along with the request
-            // http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            // http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            http.open('POST', homeurl + 'books', true);
             http.setRequestHeader('Content-type', 'text/plain');
             http.send(JSON.stringify(body));
             return null;
         }
         function reportLucks(){ // This communicates back to home to report lucks count.
             var http = new XMLHttpRequest();
-            var url = 'http://1a45799c3b5e.ngrok.io/lucks';
-            var body = {'lucks': {'poetry': clicks}};
-            http.open('POST', url, true);
-            //Send the proper header information along with the request
-            // http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            // http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            var body = {'lucks': {'poetry': clicks, 'commerce': 0, 'waajacu': 0}};
+            http.open('POST', homeurl + 'lucks', true);
             http.setRequestHeader('Content-type', 'text/plain');
             http.send(JSON.stringify(body));
             return null;
         }
+    </script>
+    <script type="text/javascript">
+        var clicks = 0;
         function highClick() {
             clicks += 1;
             document.getElementById("clicks").innerHTML = clicks;
