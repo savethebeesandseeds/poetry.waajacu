@@ -136,7 +136,7 @@
 
             newelement_latex_a = document.createElement('a');
             newelement_latex_a.setAttribute("href", pdf_url);
-            newelement_latex_a.setAttribute("innerHTML", "click here to download the PDF file.");
+            newelement_latex_a.innerHTML = "click here to download the PDF file.";
             newelement_latex_a.classList.add('link');
 
             newelement_latex.appendChild(newelement_latex_a);
