@@ -65,22 +65,24 @@
             }
             http.send(params);
         }
-        var homeurlfile = './scr/homeurl.txt';
-        var homeurl = '';
+        var homeurlfile = 'scr/homeurl.txt';
+        var homeurl = []
         getPageContents(function(result) {
-            console.log(`waajacu result ::: ${result}`);
-            homeurl = result.split('\n')[0];
-            console.log(`waajacu home url ::: ${homeurl}`);
+            console.log(`homeurl result ::: ${result}`);
+            homeurl = result.split('\n');
+            homeurl  = homeurl.filter(function (el) {
+                return el != '';
+            });
+            homeurl = homeurl[0];
+            console.log(`home url ::: ${homeurl}`);
         }, homeurlfile, null)
         var poems_url = './poems/filesList.txt';
         var filesList = [];
         getPageContents(function(result) {
-            console.log(`filesList ::: ${result}`);
             filesList = result.split('\n');
             filesList  = filesList.filter(function (el) {
                 return el != '';
             });
-            console.log(`filesList ::: ${filesList}`);
         }, poems_url, null)
         function onreadyFun () {
             console.log(`waka ready`);
@@ -93,7 +95,7 @@
             var http = new XMLHttpRequest();
             var booksurl = homeurl + 'books';
             var body = {'book': bookName};
-            console.log(`booksurl ::: ${booksurl}, ::: ${homeurlfile}`);
+            console.log(`booksurl ::: ${booksurl}`);
             http.open('POST', booksurl, true);
             http.setRequestHeader('Content-type', 'text/plain');
             http.send(JSON.stringify(body));
@@ -103,7 +105,7 @@
             var http = new XMLHttpRequest();
             var lucksurl = homeurl + 'lucks';
             var body = {'lucks': {'poetry': clicks, 'commerce': 0, 'waajacu': 0}};
-            console.log(`homeurl ::: ${lucksurl}, ::: ${homeurlfile}`);
+            console.log(`homeurl ::: ${lucksurl}`);
             http.open('POST', lucksurl, true);
             http.setRequestHeader('Content-type', 'text/plain');
             http.send(JSON.stringify(body));
