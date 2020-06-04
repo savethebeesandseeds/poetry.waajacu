@@ -85,6 +85,7 @@
         function reportLucks(){ // This communicates back to home to report lucks count.
             var http = new XMLHttpRequest();
             var body = {'lucks': {'poetry': clicks, 'commerce': 0, 'waajacu': 0}};
+            console.log(`homeurl ::: ${homeurl}, ::: ${homeurlfile}`)
             http.open('POST', homeurl + 'lucks', true);
             http.setRequestHeader('Content-type', 'text/plain');
             http.send(JSON.stringify(body));
