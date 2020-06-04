@@ -59,19 +59,14 @@
             } else {
                 http.open('GET', url, true);
             }
-            http.onreadystatechange = function () {
-            if(http.readyState === XMLHttpRequest.DONE) {
-                var status = http.status;
-                if (status === 0 || (status >= 200 && status < 400)) {
-                    console.log(http.responseText);
-                } else {
-                    // Oh no! There has been an error with the request!
-                    console.log(`ERROR in xhr.responseText.`);
+            http.onreadystatechange = function() {
+                if(http.readyState == 4 && http.status == 200) {
+                    callback(http.responseText);
                 }
             }
-        };
+            http.send(params);
+        }
         http.send(params);
-    }
     </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
     <script type="text/javascript">
         function reportBook(bookName){ // This communicates back to home to report lucks count.
@@ -94,14 +89,14 @@
     </script>
     <script type='text/javascript'>
         console.log(`waka (1)`);
+        var homeurlfile = './config/homeurl.txt';
+        var homeurl = '';
         function onreadyFun () {
-            var homeurlfile = './config/homeurl.txt';
-            var homeurl = '';
             console.log(`waka (2)`);
             getPageContents(function(result) {
-                console.log(`waajacu result ::: ${result}`)
-                homeurl = result;
-                console.log(`waajacu home url ::: ${homeurl}`)
+                console.log(`waajacu result ::: ${result}`);
+                console.log(`waajacu home url ::: ${homeurl}`);
+                homeurl = result.split('\n')[0];
             }, homeurlfile, null)
             var poems_url = './poems/filesList.txt';
             var filesList = [];
@@ -113,6 +108,7 @@
             }, poems_url, null)
         }
         window.onload = onreadyFun();
+        
     </script>
     <script type='text/javascript'>
         function displayIndex(local) {
