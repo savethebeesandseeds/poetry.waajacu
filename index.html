@@ -61,9 +61,7 @@
                 http.open('GET', url, true);
             }
             http.onreadystatechange = function() {
-                if(http.readyState == 4 && http.status == 200) {
-                    callback(http.responseText);
-                }
+                callback(http.responseText);    
             }
             http.send(params);
         }
