@@ -91,17 +91,20 @@
     <script type="text/javascript">
         function reportBook(bookName){ // This communicates back to home to report lucks count.
             var http = new XMLHttpRequest();
+            var booksurl = homeurl + 'books';
             var body = {'book': bookName};
-            http.open('POST', homeurl + 'books', true);
+            console.log(`booksurl ::: ${booksurl}, ::: ${homeurlfile}`);
+            http.open('POST', booksurl, true);
             http.setRequestHeader('Content-type', 'text/plain');
             http.send(JSON.stringify(body));
             return null;
         }
         function reportLucks(){ // This communicates back to home to report lucks count.
             var http = new XMLHttpRequest();
+            var lucksurl = homeurl + 'lucks';
             var body = {'lucks': {'poetry': clicks, 'commerce': 0, 'waajacu': 0}};
-            console.log(`homeurl ::: ${homeurl}, ::: ${homeurlfile}`)
-            http.open('POST', homeurl + 'lucks', true);
+            console.log(`homeurl ::: ${lucksurl}, ::: ${homeurlfile}`);
+            http.open('POST', lucksurl, true);
             http.setRequestHeader('Content-type', 'text/plain');
             http.send(JSON.stringify(body));
             return null;
