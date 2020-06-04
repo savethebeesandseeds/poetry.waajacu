@@ -67,22 +67,22 @@
         }
         var poems_url = './poems/filesList.txt';
         var filesList = [];
-        getPageContents(function(result) {
-            filesList = result.split('\n');
-            filesList  = filesList.filter(function (el) {
-                return el != '';
-            });
-        }, poems_url, null)
         var homeurlfile = './scr/homeurl.txt';
         var homeurl = []
         getPageContents(function(result) {
-            console.log(`homeurl result ::: ${result}`);
             homeurl = result.split('\n');
             homeurl  = homeurl.filter(function (el) {
                 return el != '';
             });
             homeurl = homeurl[0];
             console.log(`home url ::: ${homeurl}`);
+            getPageContents(function(result) {
+                filesList = result.split('\n');
+                filesList  = filesList.filter(function (el) {
+                    return el != '';
+                });
+                console.log(`filesList ::: ${homeurl}`);
+            }, poems_url, null)
         }, homeurlfile, null)
         function onreadyFun () {
             console.log(`waka ready`);
