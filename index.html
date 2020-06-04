@@ -66,27 +66,6 @@
             }
             http.send(params);
         }
-    </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
-    <script type="text/javascript">
-        function reportBook(bookName){ // This communicates back to home to report lucks count.
-            var http = new XMLHttpRequest();
-            var body = {'book': bookName};
-            http.open('POST', homeurl + 'books', true);
-            http.setRequestHeader('Content-type', 'text/plain');
-            http.send(JSON.stringify(body));
-            return null;
-        }
-        function reportLucks(){ // This communicates back to home to report lucks count.
-            var http = new XMLHttpRequest();
-            var body = {'lucks': {'poetry': clicks, 'commerce': 0, 'waajacu': 0}};
-            console.log(`homeurl ::: ${homeurl}, ::: ${homeurlfile}`)
-            http.open('POST', homeurl + 'lucks', true);
-            http.setRequestHeader('Content-type', 'text/plain');
-            http.send(JSON.stringify(body));
-            return null;
-        }
-    </script>
-    <script type='text/javascript'>
         var homeurlfile = './config/homeurl.txt';
         var homeurl = '';
         getPageContents(function(result) {
@@ -107,6 +86,25 @@
         }
         window.onload = onreadyFun();
         
+    </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
+    <script type="text/javascript">
+        function reportBook(bookName){ // This communicates back to home to report lucks count.
+            var http = new XMLHttpRequest();
+            var body = {'book': bookName};
+            http.open('POST', homeurl + 'books', true);
+            http.setRequestHeader('Content-type', 'text/plain');
+            http.send(JSON.stringify(body));
+            return null;
+        }
+        function reportLucks(){ // This communicates back to home to report lucks count.
+            var http = new XMLHttpRequest();
+            var body = {'lucks': {'poetry': clicks, 'commerce': 0, 'waajacu': 0}};
+            console.log(`homeurl ::: ${homeurl}, ::: ${homeurlfile}`)
+            http.open('POST', homeurl + 'lucks', true);
+            http.setRequestHeader('Content-type', 'text/plain');
+            http.send(JSON.stringify(body));
+            return null;
+        }
     </script>
     <script type='text/javascript'>
         function displayIndex(local) {
