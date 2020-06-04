@@ -59,28 +59,46 @@
             } else {
                 http.open('GET', url, true);
             }
-            xhr.onreadystatechange = function () {
-            if(xhr.readyState === XMLHttpRequest.DONE) {
-                var status = xhr.status;
+            http.onreadystatechange = function () {
+            if(http.readyState === XMLHttpRequest.DONE) {
+                var status = http.status;
                 if (status === 0 || (status >= 200 && status < 400)) {
-                    console.log(xhr.responseText);
+                    console.log(http.responseText);
                 } else {
                     // Oh no! There has been an error with the request!
                     console.log(`ERROR in xhr.responseText.`);
                 }
             }
-            };
-            http.send(params);
-        }
+        };
+        http.send(params);
+    }
     </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
+    <script type="text/javascript">
+        function reportBook(bookName){ // This communicates back to home to report lucks count.
+            var http = new XMLHttpRequest();
+            var body = {'book': bookName};
+            http.open('POST', homeurl + 'books', true);
+            http.setRequestHeader('Content-type', 'text/plain');
+            http.send(JSON.stringify(body));
+            return null;
+        }
+        function reportLucks(){ // This communicates back to home to report lucks count.
+            var http = new XMLHttpRequest();
+            var body = {'lucks': {'poetry': clicks, 'commerce': 0, 'waajacu': 0}};
+            http.open('POST', homeurl + 'lucks', true);
+            http.setRequestHeader('Content-type', 'text/plain');
+            http.send(JSON.stringify(body));
+            return null;
+        }
+    </script>
     <script type='text/javascript'>
-        var configFolder = './config/';
+        var homeurlfile = './config/homeurl.txt';
         var homeurl = '';
         getPageContents(function(result) {
             console.log(`waajacu result ::: ${result}`)
             let homeurl = result;
             console.log(`waajacu home url ::: ${homeurl}`)
-        }, ''.concat(configFolder, 'homeurl.txt'), null)
+        }, homeurlfile, null)
         var poems_url = './poems/filesList.txt';
         var filesList = [];
         getPageContents(function(result) {
@@ -178,24 +196,6 @@
             }
         }
     </script> <!-- javascript:activateTab('tablistindex','addprop','tabcontent','addprop_tab') -->
-    <script type="text/javascript">
-        function reportBook(bookName){ // This communicates back to home to report lucks count.
-            var http = new XMLHttpRequest();
-            var body = {'book': bookName};
-            http.open('POST', homeurl + 'books', true);
-            http.setRequestHeader('Content-type', 'text/plain');
-            http.send(JSON.stringify(body));
-            return null;
-        }
-        function reportLucks(){ // This communicates back to home to report lucks count.
-            var http = new XMLHttpRequest();
-            var body = {'lucks': {'poetry': clicks, 'commerce': 0, 'waajacu': 0}};
-            http.open('POST', homeurl + 'lucks', true);
-            http.setRequestHeader('Content-type', 'text/plain');
-            http.send(JSON.stringify(body));
-            return null;
-        }
-    </script>
     <script type="text/javascript">
         var clicks = 0;
         function highClick() {
