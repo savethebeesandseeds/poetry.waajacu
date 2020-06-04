@@ -93,9 +93,11 @@
         }
     </script>
     <script type='text/javascript'>
+        console.log(`waka ${str(1)}`);
         function onreadyFun () {
             var homeurlfile = './config/homeurl.txt';
             var homeurl = '';
+            console.log(`waka ${str(2)}`);
             getPageContents(function(result) {
                 console.log(`waajacu result ::: ${result}`)
                 homeurl = result;
