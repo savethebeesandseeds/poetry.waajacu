@@ -93,21 +93,24 @@
         }
     </script>
     <script type='text/javascript'>
-        var homeurlfile = './config/homeurl.txt';
-        var homeurl = '';
-        getPageContents(function(result) {
-            console.log(`waajacu result ::: ${result}`)
-            let homeurl = result;
-            console.log(`waajacu home url ::: ${homeurl}`)
-        }, homeurlfile, null)
-        var poems_url = './poems/filesList.txt';
-        var filesList = [];
-        getPageContents(function(result) {
-            filesList = result.split('\n');
-            filesList  = filesList.filter(function (el) {
-                return el != '';
-            });
-        }, poems_url, null)
+        function onreadyFun () {
+            var homeurlfile = './config/homeurl.txt';
+            var homeurl = '';
+            getPageContents(function(result) {
+                console.log(`waajacu result ::: ${result}`)
+                homeurl = result;
+                console.log(`waajacu home url ::: ${homeurl}`)
+            }, homeurlfile, null)
+            var poems_url = './poems/filesList.txt';
+            var filesList = [];
+            getPageContents(function(result) {
+                filesList = result.split('\n');
+                filesList  = filesList.filter(function (el) {
+                    return el != '';
+                });
+            }, poems_url, null)
+        }
+        window.onload = onreadyFun();
     </script>
     <script type='text/javascript'>
         function displayIndex(local) {
