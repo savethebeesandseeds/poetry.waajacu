@@ -76,14 +76,14 @@
             });
             homeurl = homeurl[0];
             console.log(`home url ::: ${homeurl}`);
-            getPageContents(function(result) {
-                filesList = result.split('\n');
-                filesList  = filesList.filter(function (el) {
-                    return el != '';
-                });
-                console.log(`filesList ::: ${filesList}`);
-            }, poems_url, null)
-        }, homeurlfile, null)
+        }, homeurlfile, null);
+        getPageContents(function(result) {
+            filesList = result.split('\n');
+            filesList  = filesList.filter(function (el) {
+                return el != '';
+            });
+            console.log(`filesList ::: ${filesList}`);
+        }, poems_url, null);
         function onreadyFun () {
             console.log(`waka ready`);
         }
