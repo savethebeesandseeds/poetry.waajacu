@@ -59,6 +59,17 @@
             } else {
                 http.open('GET', url, true);
             }
+            xhr.onreadystatechange = function () {
+            if(xhr.readyState === XMLHttpRequest.DONE) {
+                var status = xhr.status;
+                if (status === 0 || (status >= 200 && status < 400)) {
+                    console.log(xhr.responseText);
+                } else {
+                    // Oh no! There has been an error with the request!
+                    console.log(`ERROR in xhr.responseText.`);
+                }
+            }
+            };
             http.send(params);
         }
     </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
@@ -96,7 +107,7 @@
                     newelement_li.id = "ID_"+fileName;
                     newelement_li_a = document.createElement('a');
                     newelement_li_a.classList.add('link');
-                    aux_href = "javascript:displayPdfContent('poems/"+local+"/"+file+"')";
+                    aux_href = "javascript:displayPdfContent('./poems/"+local+"/"+file+"')";
                     newelement_li_a.setAttribute("href", aux_href);
                     newelement_li_a.title = "TITLE_"+fileName;
                     newelement_li_a.innerHTML = fileName;
