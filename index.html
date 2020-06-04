@@ -53,7 +53,7 @@
     <script type='text/javascript'>
         function getPageContents(callback,url,params) {
             console.log(`getPageContents url ::: ${url}`);
-            http = new XMLHttpRequest();
+            let http = new XMLHttpRequest();
             if(params!=null) {
                 http.open('POST', url, true);
                 http.setRequestHeader('Content-type', 'application/');
@@ -81,7 +81,7 @@
                 filesList  = filesList.filter(function (el) {
                     return el != '';
                 });
-                console.log(`filesList ::: ${homeurl}`);
+                console.log(`filesList ::: ${filesList}`);
             }, poems_url, null)
         }, homeurlfile, null)
         function onreadyFun () {
