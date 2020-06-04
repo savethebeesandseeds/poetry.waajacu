@@ -52,6 +52,7 @@
     </script>
     <script type='text/javascript'>
         function getPageContents(callback,url,params) {
+            console.log(`getPageContents url ::: ${url}`);
             http = new XMLHttpRequest();
             if(params!=null) {
                 http.open('POST', url, true);
