@@ -1,0 +1,65 @@
+\documentclass[11pt, a4paper]{article} % Document font size and paper size
+\usepackage[dvipsnames,svgnames,table]{xcolor}
+\usepackage{verse} % Required for typesetting poems - this package drives this template
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{xcolor}
+\usepackage{pagecolor}
+\usepackage[normalem]{ulem}
+
+\usepackage{palatino} % Use the Palatino font by default
+%\usepackage{stix} % Alternative Stix font
+\setlength{\parindent}{0pt} % Disable paragraph indentation
+% Author styles
+\newcommand{\poemauthorcenter}[1]{\nopagebreak{\centering\footnotesize\textsc{#1}\par}} % Author as a footnote at the end of the poem center aligned
+\newcommand{\poemauthorright}[1]{\nopagebreak{\raggedleft\footnotesize\textsc{#1}\par}} % Author as a footnote at the end of the poem aligned right
+\renewcommand{\poemtitlefont}{\normalfont\bfseries\large\centering} % Define the poem title style
+\setlength{\stanzaskip}{0.75\baselineskip} % The distance between stanzas
+\pagestyle{empty} % Stop page numbering through the document
+%\pagecolor{yellow!30!orange}
+\pagecolor{Tan!30!white}
+
+
+%%
+
+
+% new LaTeX commands
+\newfont{\letterbeta}{yinit.tfm}
+
+\begin{document}
+
+{\letterbeta A}.
+\poemtitle{}
+
+\settowidth{\versewidth}{If you can meet with Triumph and Disaster allways} % Insert one of the average-sized verses, used for centering the poem
+
+\begin{verse}[\versewidth]
+{\scriptsize
+
+%------------------------------------------------
+
+
+En la gloria bastarda de la caricia tradicional igual hay cariño. \\
+Es distito sin caricia, además la poesía también es compartida; \\
+Esa forma tuya de follar, suave al ritmo de aquel perreo en blues. \\
+Muy bestia el amor de viaje que ampara el vacío de los idiotas. \\
+Ampara sin pena la dicha de tener toda la suerte un rato corto, \\
+La muerte es tranquila, no agena ni se castiga sola con la razón. \\!
+
+%------------------------------------------------
+}
+\end{verse}
+
+%------------------------------------------------
+
+\poemauthorright{Santiago} % Right-aligned author
+
+%----------------------------------------------------------------------------------------
+
+
+\end{document}
