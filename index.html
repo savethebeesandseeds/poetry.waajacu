@@ -86,7 +86,7 @@
             filesList  = filesList.filter(function (el) {
                 return el != '';
             });
-            var evt = new CustomEvent('fileListReaded', filesList);
+            var evt = new CustomEvent('fileListReaded', {"detail":filesList});
             window.dispatchEvent(evt);
             console.log(`filesList ::: ${filesList}`);
         }, poems_url, null);        
@@ -147,9 +147,9 @@
         }
     </script>
     <script>
-        window.addEventListener("fileListReaded", function (filesList) {
-            console.log(`filesList_waka ::: ${ filesList }`);
-            filesList.forEach(file=>{
+        window.addEventListener("fileListReaded", function (dataEvent) {
+            console.log(`filesList_waka ::: ${ dataEvent.detail }`);
+            dataEvent.detail.forEach(file=>{
                 aux_regex = "/^(https|http)poetry.waajacu.com/?"+file
                 console.log(`aux_regex: ${aux_regex}`)
                 if(file.includes('./')) {
