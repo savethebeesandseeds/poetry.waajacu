@@ -149,13 +149,10 @@
     <script>
         window.addEventListener("fileListReaded", function (dataEvent) {
             console.log(`filesList_waka ::: ${ dataEvent.detail }`);
-            var clocal = "";
             dataEvent.detail.forEach(file=>{
                 aux_regex = "/^(https|http)poetry.waajacu.com/?"+file
                 console.log(`aux_regex: ${aux_regex}`)
-                if(file.includes('./')) {
-                    clocal = file;
-                } else if(clocal.includes(local) && file.includes('.pdf') && window.location.href.match(new RegExp(aux_regex))) {
+                if(file.includes('.pdf') && window.location.href.match(new RegExp(aux_regex))) {
                     displayPdfContent('./poems/'+local+'/'+file)
                 }
             })
