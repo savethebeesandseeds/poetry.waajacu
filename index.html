@@ -69,9 +69,9 @@
             }
             http.send(params);
         }
-        var poems_url = './poems/filesList.txt';
+        var poems_url = window.location.origin+'/poems/filesList.txt';
         var filesList = [];
-        var homeurlfile = './src/homeurl.txt';
+        var homeurlfile = window.location.origin+'/src/homeurl.txt';
         var homeurl = []
         getPageContents(function(result) {
             homeurl = result.split('\n');
@@ -130,7 +130,7 @@
                     newelement_li.id = "ID_"+fileName;
                     newelement_li_a = document.createElement('a');
                     newelement_li_a.classList.add('link');
-                    aux_href = "javascript:displayPdfContent('./poems/"+local+"/"+file+"')";
+                    aux_href = "javascript:displayPdfContent("+window.location.origin+"'/poems/"+local+"/"+file+"')";
                     newelement_li_a.setAttribute("href", aux_href);
                     newelement_li_a.title = "TITLE_"+fileName;
                     newelement_li_a.innerHTML = fileName;
@@ -156,7 +156,7 @@
                 if(file.includes('./')) {
                     clocal = file.replace(/\.\//g, '');;
                 } else if(file.includes('.pdf') && (new RegExp('(https:\/\/|http:\/\/)poetry\\.waajacu\\.com\\/\\?'+fileName+'\\.'+fileExt,'gm').exec(window.location.href) !== null)) {
-                    displayPdfContent('./poems/'+clocal+'/'+file)
+                    displayPdfContent(window.location.origin+'/poems/'+clocal+'/'+file)
                 }
             })
             console.log(`waka ready`);
@@ -188,7 +188,7 @@
             newelement_latex.setAttribute("height", "100%");
 
             newelement_latex_a = document.createElement('a');
-            newelement_latex_a.setAttribute("href", `javascript:window.open("${window.location.href + pdf_url}");`);
+            newelement_latex_a.setAttribute("href", `javascript:window.open("${pdf_url}");`);
             newelement_latex_a.innerHTML = "click here to view the PDF file.";
             newelement_latex_a.classList.add('gold');
 
