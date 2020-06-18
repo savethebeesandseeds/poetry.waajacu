@@ -148,7 +148,7 @@
     </script>
     <script>
         window.addEventListener("fileListReaded", function (eventData) {
-            eventData['filesList'].forEach(file=>{
+            eventData.filesList.forEach(file=>{
                 aux_regex = "/^(https|http)poetry.waajacu.com/?"+file
                 console.log(`aux_regex: ${aux_regex}`)
                 if(file.includes('./')) {
