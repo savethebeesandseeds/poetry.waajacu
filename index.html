@@ -148,6 +148,7 @@
     </script>
     <script>
         window.addEventListener("fileListReaded", function (filesList) {
+            console.log(`filesList_waka ::: ${ filesList }`);
             filesList.forEach(file=>{
                 aux_regex = "/^(https|http)poetry.waajacu.com/?"+file
                 console.log(`aux_regex: ${aux_regex}`)
