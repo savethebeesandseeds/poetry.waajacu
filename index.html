@@ -86,7 +86,7 @@
             filesList  = filesList.filter(function (el) {
                 return el != '';
             });
-            var evt = new CustomEvent('fileListReaded', { 'filesList': filesList });
+            var evt = new CustomEvent('fileListReaded', { filesList: filesList });
             window.dispatchEvent(evt);
             console.log(`filesList ::: ${filesList}`);
         }, poems_url, null);        
