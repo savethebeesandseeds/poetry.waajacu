@@ -130,7 +130,7 @@
                     newelement_li.id = "ID_"+fileName;
                     newelement_li_a = document.createElement('a');
                     newelement_li_a.classList.add('link');
-                    aux_href = "javascript:displayPdfContent("+window.location.origin+"'/poems/"+local+"/"+file+"')";
+                    aux_href = "javascript:displayPdfContent('"+window.location.origin+"/poems/"+local+"/"+file+"')";
                     newelement_li_a.setAttribute("href", aux_href);
                     newelement_li_a.title = "TITLE_"+fileName;
                     newelement_li_a.innerHTML = fileName;
