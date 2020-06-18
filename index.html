@@ -87,12 +87,7 @@
                 return el != '';
             });
             console.log(`filesList ::: ${filesList}`);
-        }, poems_url, null);
-        function onreadyFun () {
-            console.log(`waka ready`);
-        }
-        window.onload = onreadyFun();
-        
+        }, poems_url, null);        
     </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
     <script type="text/javascript">
         function reportBook(bookName){ // This communicates back to home to report lucks count.
@@ -148,6 +143,22 @@
                 contentNode.appendChild(newelement);
             }
         }
+    </script>
+    <script>
+        function onreadyFun () {
+            console.log(`filesList: ${filesList}`);
+            filesList.forEach(file=>{
+                aux_regex = "/^(https|http)poetry.waajacu.com/?"+file
+                console.log(`aux_regex: ${aux_regex}`)
+                if(file.includes('./')) {
+                    clocal = file;
+                } else if(clocal.includes(local) && file.includes('.pdf') && window.location.href.match()) {
+                    displayPdfContent('./poems/'+local+'/'+file)
+                }
+            })
+            console.log(`waka ready`);
+        }
+        window.onload = onreadyFun();
     </script>
     <script type='text/javascript'>
         function displayTexContent(tex_url) {
