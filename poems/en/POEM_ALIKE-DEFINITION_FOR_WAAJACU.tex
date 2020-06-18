@@ -1,52 +1,41 @@
-\documentclass[12pt]{article}
-\usepackage{makeidx}
-\usepackage{multirow}
-\usepackage{multicol}
+\documentclass[11pt, a4paper]{article} % Document font size and paper size
 \usepackage[dvipsnames,svgnames,table]{xcolor}
+\usepackage{verse} % Required for typesetting poems - this package drives this template
 \usepackage{graphicx}
 \usepackage{epstopdf}
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage[utf8]{inputenc} 
-\usepackage[english]{babel}
-\usepackage{enumerate}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
 \usepackage{xcolor}
-\usepackage[normalem]{ulem}
 \usepackage{pagecolor}
+\usepackage[normalem]{ulem}
+
+\usepackage{palatino} % Use the Palatino font by default
+%\usepackage{stix} % Alternative Stix font
+\setlength{\parindent}{0pt} % Disable paragraph indentation
+% Author styles
+\newcommand{\poemauthorcenter}[1]{\nopagebreak{\centering\footnotesize\textsc{#1}\par}} % Author as a footnote at the end of the poem center aligned
+\newcommand{\poemauthorright}[1]{\nopagebreak{\raggedleft\footnotesize\textsc{#1}\par}} % Author as a footnote at the end of the poem aligned right
+\renewcommand{\poemtitlefont}{\normalfont\bfseries\large\centering} % Define the poem title style
+\setlength{\stanzaskip}{0.75\baselineskip} % The distance between stanzas
+\pagestyle{empty} % Stop page numbering through the document
 %\pagecolor{yellow!30!orange}
 \pagecolor{Tan!30!white}
+
+
 %%
-\author{}
-\title{}
-\usepackage[paperwidth=612pt,paperheight=792pt,top=32pt,right=71pt,bottom=17pt,left=71pt]{geometry}
 
-
-\makeatletter
-	\newenvironment{indentation}[3]%
-	{\par\setlength{\parindent}{#3}
-	\setlength{\leftmargin}{#1}       \setlength{\rightmargin}{#2}%
-	\advance\linewidth -\leftmargin       \advance\linewidth -\rightmargin%
-	\advance\@totalleftmargin\leftmargin  \@setpar{{\@@par}}%
-	\parshape 1\@totalleftmargin \linewidth\ignorespaces}{\par}%
-\makeatother 
 
 % new LaTeX commands
 \newfont{\letterbeta}{yinit.tfm}
 
 \begin{document}
-
-{\raggedright\scriptsize
-\begin{indentation}{84pt}{0pt}{0pt}
-{
-	{\letterbeta W}.
-}
-\end{indentation}
-}
-
+{\letterbeta Z}
 \poemtitle{}
 
-\settowidth{\versewidth}{Never coud've been less certain but more lucid about it, } % Insert one of the average-sized verses, used for centering the poem
+\settowidth{\versewidth}{Never coudve been less certain but more lucid about it} % Insert one of the average-sized verses, used for centering the poem
 
 \begin{verse}[\versewidth]
 {\scriptsize 
