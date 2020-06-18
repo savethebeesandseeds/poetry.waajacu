@@ -134,7 +134,7 @@
                     newelement_li.id = "ID_"+fileName;
                     newelement_li_a = document.createElement('a');
                     newelement_li_a.classList.add('link');
-                    aux_href = "javascript:displayPdfContent('"+window.location.origin+"/poems/"+local+"/"+file+"');";
+                    aux_href = "javascript:displayPdfContent('"+window.location.origin+"/poems/"+local+"/"+file+"', '"+file+"');";
                     newelement_li_a.setAttribute("href", aux_href);
                     newelement_li_a.title = "TITLE_"+fileName;
                     newelement_li_a.innerHTML = fileName;
@@ -161,7 +161,7 @@
                     clocal = file.replace(/\.\//g, '');
                     clocal = file.replace(/\:/g, '');
                 } else if(file.includes('.pdf') && (new RegExp('(https:\/\/|http:\/\/)poetry\\.waajacu\\.com\\/\\?'+fileName+'\\.'+fileExt,'gm').exec(window.location.href) !== null)) {
-                    displayPdfContent(window.location.origin+'/poems/'+clocal+'/'+file)
+                    displayPdfContent(window.location.origin+'/poems/'+clocal+'/'+file, file)
                 }
             })
             console.log(`waka ready`);
@@ -182,7 +182,7 @@
                 console.log(result.toString());
             }, tex_url, null)
         }
-        function displayPdfContent(pdf_url) {
+        function displayPdfContent(pdf_url,pdf_title) {
             contentNode = document.getElementById('tabcontent');
             while (contentNode.firstChild) {
                 contentNode.removeChild(contentNode.firstChild);
@@ -199,7 +199,7 @@
 
             newelement_latex.appendChild(newelement_latex_a);
             contentNode.appendChild(newelement_latex);
-            changeurl(pdf_url);
+            changeurl(pdf_url, pdf_title);
             reportBook(pdf_url);
         }
     </script>
