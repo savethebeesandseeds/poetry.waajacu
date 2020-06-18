@@ -88,7 +88,6 @@
             });
             var evt = new CustomEvent('fileListReaded', {"detail":filesList});
             window.dispatchEvent(evt);
-            console.log(`filesList ::: ${filesList}`);
         }, poems_url, null);        
     </script> <!-- var textFromFile = (window.URL || window.webkitURL || {}).createObjectURL || function(){}; -->
     <script type="text/javascript">
@@ -153,7 +152,6 @@
     <script>
         window.addEventListener("fileListReaded", function (dataEvent) {
             var clocal = "";
-            console.log(`filesList_waka ::: ${ dataEvent.detail }`);
             dataEvent.detail.forEach(file=>{
                 var fileName = file.split('.')[0];
                 var fileExt = file.split('.')[1];
@@ -164,7 +162,6 @@
                     displayPdfContent(window.location.origin+'/poems/'+clocal+'/'+file, file)
                 }
             })
-            console.log(`waka ready`);
         });
         
     </script>
