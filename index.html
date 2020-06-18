@@ -152,11 +152,11 @@
             console.log(`filesList_waka ::: ${ dataEvent.detail }`);
             dataEvent.detail.forEach(file=>{
                 if(file.includes('./')) {
-                    clocal = file;
+                    clocal = file.replace(/\.\//g, '');;
                 } else if(file.includes('.pdf') && window.location.href.match(new RegExp("(https:\/\/|http:\/\/)poetry\\.waajacu\\.com\\/\\?"+fileName+"\\."+fileExt,"gm") !== null)) {
                     fileName = file.split('.')[0];
                     fileExt = file.split('.')[1];
-                    displayPdfContent('./poems/'+local+'/'+file)
+                    displayPdfContent('./poems/'+clocal+'/'+file)
                 }
             })
             console.log(`waka ready`);
