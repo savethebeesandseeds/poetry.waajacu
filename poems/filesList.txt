@@ -9,8 +9,8 @@ template.tex
 A_REGULAR_WAY_OF_LIVING.tex
 doc2.tex
 doc3.tex
-JOIN.pdf
-JOIN.tex
+JOIN_WAAJACU.pdf
+JOIN_WAAJACU.tex
 POEM_ALIKE-DEFINITION_FOR_WAAJACU.pdf
 POEM_ALIKE-DEFINITION_FOR_WAAJACU.tex
 template.tex
