@@ -5,6 +5,8 @@ en  es	filesList.txt  template.tex
 A_REGULAR_WAY_OF_LIVING.tex	       
 doc2.tex
 doc3.tex			       
+SERVICIO-DE-NEGOCIAR-RENDICIONES.tex
+SERVICIO-DE-NEGOCIAR-RENDICIONES.pdf
 JOIN_WAAJACU.pdf
 JOIN_WAAJACU.tex		       
 NO_COURAGE_LEFT_ON_BANCA.pdf
